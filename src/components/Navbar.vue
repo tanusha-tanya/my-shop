@@ -1,18 +1,33 @@
 <template>
   <div>
-    <v-navigation-drawer app temporary> 
-      <!-- -->
+    <v-navigation-drawer app temporary v-model="sideNav"> 
+       <v-list>
+        <v-list-item v-for="(link, i) in links" :key="i" :to="link.url">
+          <v-list-item-icon>
+            <v-icon color="pink">
+              {{link.icon}}
+            </v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title v-text="link.title"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
 
     <v-app-bar app dark  prominent
-      src="https://thumbs.dreamstime.com/b/%D1%80%D0%BE%D0%B7%D1%8B-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D1%8B-%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D1%8B%D0%B5-%D0%B1%D0%B5%D0%B7%D1%88%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D1%82%D0%B0%D0%BA%D0%B6%D0%B5-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D0%BF%D1%80%D0%B8%D1%82%D1%8F%D0%B6%D0%BA%D0%B8-corel-123767623.jpg">
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      src="https://img4.goodfon.ru/original/5616x3744/0/82/fon-tekstura-tsvety-rozy-krasnye.jpg">
+      <v-app-bar-nav-icon @click="sideNav = !sideNav"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Online Store</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn text>mdi-magnify</v-btn>
+      <v-btn text depressed v-for="(link, i) in links" :key="i" :to="link.url">
+        <v-icon left>{{link.icon}}</v-icon>
+        {{link.title}}
+      </v-btn>
     </v-app-bar>
 
     <!-- Sizes your content based upon application components -->
@@ -31,3 +46,19 @@
     </v-footer>
   </div>
 </template>
+<script>
+  export default {
+    data () {
+      return {
+        sideNav: false,
+        links: [
+          {title: 'Login', icon:'account_box', url: '/login'},
+          {title: 'Register', icon:'face', url: '/register'},
+          {title: 'Cart', icon:'shopping_cart', url: '/chekcout'},
+          {title: 'New product', icon:'add', url: '/new'},
+          {title: 'My products', icon:'list', url: '/list'}
+        ]
+      }
+    }
+  }
+</script>
