@@ -58,7 +58,7 @@
         links: [
           {title: 'Login', icon:'account_box', url: '/login'},
           {title: 'Register', icon:'face', url: '/register'},
-          {title: 'Cart', icon:'shopping_cart', url: '/chekcout'},
+          {title: 'Cart', icon:'shopping_cart', url: '/checkout'},
           {title: 'New product', icon:'add', url: '/new'},
           {title: 'My products', icon:'list', url: '/list'}
         ]
