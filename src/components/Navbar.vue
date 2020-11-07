@@ -18,13 +18,17 @@
 
     <v-app-bar app dark  prominent
       src="https://img4.goodfon.ru/original/5616x3744/0/82/fon-tekstura-tsvety-rozy-krasnye.jpg">
-      <v-app-bar-nav-icon @click="sideNav = !sideNav"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon 
+        @click="sideNav = !sideNav"
+        class="hidden-md-and-up"
+        >
+      </v-app-bar-nav-icon>
 
       <v-toolbar-title>Online Store</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn text depressed v-for="(link, i) in links" :key="i" :to="link.url">
+      <v-btn text depressed v-for="(link, i) in links" :key="i" :to="link.url"  class="hidden-sm-and-down">
         <v-icon left>{{link.icon}}</v-icon>
         {{link.title}}
       </v-btn>
