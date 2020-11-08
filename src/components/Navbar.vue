@@ -17,14 +17,16 @@
     </v-navigation-drawer>
 
     <v-app-bar app dark  prominent
-      src="https://img4.goodfon.ru/original/5616x3744/0/82/fon-tekstura-tsvety-rozy-krasnye.jpg">
+      src="https://coolwallpapers.me/picsup/2213815-blue-geometric-shape-abstract-technology-background.jpg">
       <v-app-bar-nav-icon 
         @click="sideNav = !sideNav"
         class="hidden-md-and-up"
         >
       </v-app-bar-nav-icon>
 
-      <v-toolbar-title>Online Store</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" class="pointer">Online Store</router-link>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -66,3 +68,8 @@
     }
   }
 </script>
+<style scoped>
+  .pointer{
+    cursor: pointer;
+  }
+</style>
