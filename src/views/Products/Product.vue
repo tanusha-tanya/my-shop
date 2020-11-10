@@ -3,30 +3,30 @@
     <section class="product mt-3 elevation-10">
       <v-layout row wrap>
         <v-flex xs12 lg6>
-          <v-img src="https://image.ibb.co/cpScgo/ASUS_FX503_VD.jpg" class="product_img"></v-img>
+          <v-img :src="product.imageSrc" class="product_img"></v-img>
         </v-flex>
         <v-flex xs12 lg6>
           <div class="product_info">
-            <h5 class="product_title display-1 mb-3 mt-3">Lorem lorem</h5>
+            <h5 class="product_title display-1 mb-3 mt-3">{{product.title}}</h5>
             <p class="product_category title">
-              <span class="product_title">Vendor: </span> Lorem
+              <span class="product_title">Vendor: </span> {{product.vendor.charAt(0).toUpperCase() + product.vendor.substr(1)}}
             </p>
             <p class="product_price title">
-              <span class="product_title">Price: </span>$ 1255
+              <span class="product_title">Price: </span>$ {{product.price}}
             </p>
             <p class="product_color title">
               <span class="product_title">Color: </span>
               <span
-                :title="'purple'"
-                :style = "{backgroundColor:'purple'}"
+                :title="product.color"
+                :style = "{backgroundColor:product.color}"
                 class="product_color__bg"
               ></span>
             </p>
             <p class="product_material title">
-              <span class="product_title">Material: </span>plastic
+              <span class="product_title">Material: </span>{{product.material.charAt(0).toUpperCase() + product.material.substr(1)}}
             </p>
             <div class="title mb-5">
-              <p class="product_title mb-2">Description: </p> Intel Core i5 7300HQ 2500 MHz/15.6"/1920x1080/8Gb/1000Gb HDD/DVD нет/NVIDIA GeForce GTX 1050, 4096 МБ/Wi-Fi/Bluetooth/Win 10 Home
+              <p class="product_title mb-2">Description: </p> {{product.description}}
             </div>
             <v-btn color="primary" class="headline mr-2">Edit</v-btn>
             <v-btn color="primary" class="headline">Buy</v-btn>
@@ -38,11 +38,13 @@
 </template>
 <script>
   export default { 
-    data () {
-      return {
-        
+    props: ['id'],
+    computed: {
+      product () {
+        const id = this.id
+        return this.$store.getters.productById(id)
       }
-    }
+    },
   }
 </script>
 <style scoped>

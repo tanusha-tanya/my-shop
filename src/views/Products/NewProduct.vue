@@ -10,7 +10,7 @@
             label="Title*"
             type="text"
             :rules="[v => !!v || 'Title is require']"
-            v-model="email"
+            v-model="title"
             required>
           </v-text-field>
           <v-text-field 
@@ -115,7 +115,7 @@
             promo: this.promo,
             valid: this.valid
           }
-          console.log(product)
+          this.$store.dispatch('createProduct', product)
         }
       }
     }
