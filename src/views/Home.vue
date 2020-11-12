@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!loading">
     <v-container fluid>
       <v-layout row>
         <v-flex xs12>
@@ -65,6 +65,20 @@
       </v-layout>
     </v-container>
   </div>
+  <div v-else>
+    <v-container>
+      <v-layout row>
+        <v-flex xs12 class="d-flex justify-center pt-5">
+          <v-progress-circular
+            :size="70"
+            :width="7"
+            color="purple"
+            indeterminate
+          ></v-progress-circular>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 <script>
   export default {
@@ -75,6 +89,9 @@
       products () {
         return this.$store.getters.products
       },
+      loading () {
+        return this.$store.getters.loading
+      }
     }
   }
 </script>
