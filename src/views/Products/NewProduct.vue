@@ -78,9 +78,10 @@
           <v-flex xs12>
             <v-spacer></v-spacer>
             <v-btn 
+              :loading="loading"
               color="success"
               @click="createProduct"
-              :disabled="!valid">
+              :disabled="!valid || loading">
               Create Product</v-btn>
           </v-flex>
         </v-layout>
@@ -116,7 +117,16 @@
             valid: this.valid
           }
           this.$store.dispatch('createProduct', product)
+          .then(() => {
+            this.$router.push('/list')
+          })
+          .catch(() => {})
         }
+      }
+    },
+    computed: {
+      loading () {
+        return this.$store.getters.loading
       }
     }
   }

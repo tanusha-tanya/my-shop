@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import AuthGuard from './auth-guard'
 import Home from '@/views/Home'
 import Login from '@/views/Auth/Login'
 import Register from '@/views/Auth/Register'
@@ -38,17 +39,20 @@ const router = new VueRouter({
     {
       path: '/list',
       name: 'productList',
-      component: ProductList
+      component: ProductList,
+      beforeEnter: AuthGuard
     },
     {
       path: '/new',
       name: 'newProduct',
-      component: NewProduct
+      component: NewProduct,
+      beforeEnter: AuthGuard
     },
     {
       path: '/checkout',
       name: 'checkout',
-      component: Checkout
+      component: Checkout,
+      beforeEnter: AuthGuard
     }
   ]
 })
