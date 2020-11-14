@@ -123,7 +123,6 @@
             price: this.price,
             description: this.description,
             promo: this.promo,
-            valid: this.valid,
             image: this.image
           }
           this.$store.dispatch('createProduct', product)

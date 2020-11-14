@@ -8,8 +8,7 @@
       subheader
       three-line
     >
-      <v-list-item-group
-        v-model="settings"
+      <v-list-item-group       
         multiple
         active-class=""
       >

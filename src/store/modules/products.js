@@ -56,7 +56,6 @@ export default {
         const fileData = await fb.storage().ref(`products/${product.key}.${imageExt}`).put(image)
         const imageSrc = await fb.storage().ref().child(fileData.ref.fullPath).getDownloadURL()
         await fb.database().ref('products').child(product.key).update({ imageSrc })
-        // console.log(product)
         commit('setLoading', false)
         commit('createProduct', {
           ...newProduct,
@@ -120,7 +119,7 @@ export default {
         commit('setLoading', false)
         throw error
       }
-    }
+    },
   },
   getters: {
     products (state) {
