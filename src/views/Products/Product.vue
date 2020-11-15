@@ -28,8 +28,8 @@
             <div class="title mb-5">
               <p class="product_title mb-2">Description: </p> {{product.description}}
             </div>
-            <app-edit-product :product="product"/>
-            <v-btn color="primary" class="headline">Buy</v-btn>
+            <app-edit-product :product="product" v-if="isOwner"/>
+            <app-buy-dialog :product="product"/>
           </div>
         </v-flex>
       </v-layout>
@@ -64,6 +64,9 @@
       },
       loading () {
         return this.$store.getters.loading
+      },
+      isOwner () {
+        return this.product.ownerId === this.$store.getters.user.id
       }
     },
   }

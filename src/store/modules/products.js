@@ -53,8 +53,9 @@ export default {
 
         const product = await fb.database().ref('products').push(newProduct)
         const imageExt = image.name.slice(image.name.lastIndexOf('.'))
-        const fileData = await fb.storage().ref(`products/${product.key}.${imageExt}`).put(image)
+        const fileData = await fb.storage().ref().child(`products/${product.key}${imageExt}`).put(image)
         const imageSrc = await fb.storage().ref().child(fileData.ref.fullPath).getDownloadURL()
+        console.log(imageSrc)
         await fb.database().ref('products').child(product.key).update({ imageSrc })
         commit('setLoading', false)
         commit('createProduct', {

@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify';
+import BuyDialogComponent from './components/Common/BuyDialog.vue'
+import vuetify from './plugins/vuetify'
 import router from './router'
 import store from './store'
 import fb from 'firebase'
 
+Vue.component('app-buy-dialog', BuyDialogComponent)
 Vue.config.productionTip = false
+
 
 new Vue({
   vuetify,
@@ -29,6 +32,7 @@ new Vue({
         this.$store.dispatch('autoLoginUser', user)
       }
     }),
+    fb.storage() 
     this.$store.dispatch('fetchProducts')
   },
   render: h => h(App)

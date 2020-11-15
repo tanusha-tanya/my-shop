@@ -61,10 +61,6 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-
-    <v-footer app>
-      <!-- -->
-    </v-footer>
   </div>
 </template>
 <script>

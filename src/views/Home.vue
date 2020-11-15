@@ -51,14 +51,7 @@
           >
             Description
           </v-btn>
-
-          <v-btn
-            color="secondary"
-            elevation="2"
-            rounded
-          >
-            Add to Cart
-          </v-btn>
+          <app-buy-dialog :product="product"/>
         </v-card-actions>
          </v-card>
         </v-flex>
