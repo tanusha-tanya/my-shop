@@ -14,32 +14,42 @@
     </template>
     <v-card>
       <v-card-title class="mb-3">
-        <h1 class="text--primary">Edit Product</h1>
+        <h1 class="text--primary">Do you want to buy {{product.title}}?</h1>
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text class="mt-3">
         <v-text-field 
           color="black" 
-          name="title" 
-          label="Title" 
+          name="name" 
+          label="Name" 
           type="text"           
-          v-model="editedTitle"
+          v-model="name"
           required>
         </v-text-field>
         <v-text-field 
           color="black" 
-          name="description" 
-          label="description" 
+          name="phone" 
+          label="Phone" 
           type="text"           
-          v-model="editedDescription"
+          v-model="phone"
           required>
         </v-text-field>
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn dark color="light-blue darken-4" outlined @click="onCansel">Cansel</v-btn>
-        <v-btn dark color="light-blue darken-4" @click="onSave">Save</v-btn>
+        <v-btn 
+          dark 
+          color="light-blue darken-4" 
+          outlined 
+          @click="onCansel" 
+          :disabled="localLoading">Close</v-btn>
+        <v-btn 
+          dark 
+          color="light-blue darken-4" 
+          :disabled="localLoading"
+          :loading="localLoading"
+          @click="onSave">Buy it</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -51,24 +61,32 @@ export default {
   data () {
     return {
       dialog: false,
-      editedTitle: this.product.title,
-      editedDescription: this.product.description
+      name: '',
+      phone: '',
+      localLoading: false
     }
   },
   methods: {
     onCansel () {
-      this.editedTitle = this.product.title
-      this.editedDescription = this.product.description
+      this.name = ''
+      this.phone = ''
       this.dialog = false
     },
     onSave () {
-      if (this.editedTitle !== '' && this.editedDescription !== '') {
-        this.$store.dispatch('updateProduct', {
-          title: this.editedTitle,
-          description: this.editedDescription,
-          id: this.product.id
+      if (this.name !== '' && this.phone !== '') {
+        this.localLoading = true
+        this.$store.dispatch('createOrder', {
+          name: this.name,
+          phone: this.phone,
+          productId: this.product.id,
+          ownerId: this.product.ownerId
         })
-        this.dialog = false
+        .finally(() => {
+          this.name = ''
+          this.phone = ''
+          this.localLoading = false
+          this.dialog = false
+        })
       }
     } 
   }
