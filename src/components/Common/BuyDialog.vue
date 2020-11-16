@@ -14,14 +14,14 @@
     </template>
     <v-card>
       <v-card-title class="mb-3">
-        <h1 class="text--primary">Do you want to buy {{product.title}}?</h1>
+        <h2 class="text--primary">Do you want to buy it?</h2>
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text class="mt-3">
         <v-text-field 
           color="black" 
           name="name" 
-          label="Name" 
+          label="Your Name" 
           type="text"           
           v-model="name"
           required>
@@ -29,7 +29,7 @@
         <v-text-field 
           color="black" 
           name="phone" 
-          label="Phone" 
+          label="Your Phone" 
           type="text"           
           v-model="phone"
           required>
@@ -39,14 +39,13 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn 
-          dark 
-          color="light-blue darken-4" 
+          text
           outlined 
           @click="onCansel" 
           :disabled="localLoading">Close</v-btn>
-        <v-btn 
-          dark 
-          color="light-blue darken-4" 
+        <v-btn  
+          text
+          class="success"
           :disabled="localLoading"
           :loading="localLoading"
           @click="onSave">Buy it</v-btn>

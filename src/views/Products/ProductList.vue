@@ -2,12 +2,12 @@
   <v-container>
     <v-layout row v-if="!loading && myProducts.length !== 0">
       <v-flex xs12 sm6 offset-sm3>
-        <h1 class="text--secondary mb3">My Products</h1>
+        <h1 class="text--secondary mb-3">My Products</h1>
         <v-card 
           class="elevation-10 mb-2" 
           v-for="(product, i) in myProducts"
           :key="i">
-          <v-layout>
+          <v-layout row>
             <v-flex xs4>
               <v-img
                 :src="product.imageSrc"
@@ -20,7 +20,6 @@
                 <p>{{product.description}}</p>
               </v-card-text>
               <v-card-actions>
-                <v-spacer></v-spacer>
                 <v-btn class="info"
                   :to="'/product/'+ product.id">Open</v-btn>
               </v-card-actions>

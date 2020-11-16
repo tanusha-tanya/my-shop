@@ -43,13 +43,13 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn           
-            color="secondary"
+            color="primary" 
+            class="headline mr-2"
             elevation="2"
-            outlined
-            rounded            
+            outlined         
             :to="'product/'+product.id"
           >
-            Description
+            Open
           </v-btn>
           <app-buy-dialog :product="product"/>
         </v-card-actions>
